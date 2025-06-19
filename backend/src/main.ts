@@ -17,6 +17,11 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix, {
     exclude: ['/:shortUrl'],
   });
+
+  app.enableCors({
+    origin: ['http://localhost:5173', 'http://localhost:8080'],
+    credentials: true,
+  });
   app.set('trust proxy', true);
   await app.listen(process.env.API_PORT || 3000);
 }
