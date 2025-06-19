@@ -1,0 +1,56 @@
+services:
+  link-shortener:
+    build: ./backend
+    container_name: link-shortener
+    ports:
+      - ${API_PORT}:${API_PORT}
+    networks:
+      - link-shortener-network
+    depends_on:
+      - link-shortener-db
+    environment:
+      API_PORT: ${API_PORT}
+      NGINX_PORT: ${NGINX_PORT}
+      HOST: ${HOST}
+    env_file:
+      - .env
+
+  link-shortener-db:
+    restart: on-failure
+    image: postgres
+    container_name: link-shortener-db
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - linkShortenerDB:/var/lib/postgresql/data
+    networks:
+      - link-shortener-network
+    env_file:
+      - .env
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-proxy
+    ports:
+      - "${NGINX_PORT}:${NGINX_PORT}"
+    volumes:
+      - ./nginx/default.conf.template:/etc/nginx/templates/default.conf.template
+    env_file:
+      - .env
+    environment:
+      - API_PORT=${API_PORT}
+      - NGINX_PORT=${NGINX_PORT}
+    depends_on:
+      - link-shortener
+    networks:
+      - link-shortener-network
+
+volumes:
+  linkShortenerDB:
+
+networks:
+  link-shortener-network:
