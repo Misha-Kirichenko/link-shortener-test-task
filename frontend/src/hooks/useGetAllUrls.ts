@@ -26,7 +26,7 @@ const useGetAllUrls = () => {
 		fetchUrlList();
 	}, []);
 
-	return { urlList, isLoading };
+	return { urlList, setUrlList, isLoading };
 };
 
 export default useGetAllUrls;

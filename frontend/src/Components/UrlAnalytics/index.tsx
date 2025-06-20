@@ -11,18 +11,18 @@ interface UrlAnalyticsProps {
 const UrlAnalytics = ({ isLoading, analytics }: UrlAnalyticsProps) => {
 	return (
 		<div className="info-analytics-wrapper">
-			<Card bordered>
+			<Card variant="outlined">
 				<Title level={3}>URL Analytics</Title>
 
 				{isLoading ? (
 					<div className="loader-style">
-						<Spin size="large" tip="Loading Analytics..." />
+						<Spin size="large"/>
 					</div>
 				) : analytics ? (
 					<>
 						<Descriptions
 							column={1}
-							labelStyle={{ fontWeight: "bold", width: 150 }}
+							styles={{ label: { fontWeight: "bold", width: 150 } }}
 						>
 							<Descriptions.Item label="Click Count">
 								<Tag color="blue">{analytics.clickCount}</Tag>

@@ -12,26 +12,19 @@ interface UrlInfoProps {
 const UrlInfo = ({ isLoading, urlInfo }: UrlInfoProps) => {
 	return (
 		<div className="info-analytics-wrapper">
-			<Card bordered>
-				<Title level={3}>
-					URL Information
-				</Title>
+			<Card variant="outlined">
+				<Title level={3}>URL Information</Title>
 
 				<Descriptions
 					column={1}
-					labelStyle={{ fontWeight: "bold", width: 150 }}
-					contentStyle={{ wordBreak: "break-word" }}
+					styles={{
+						label: { fontWeight: "bold", width: 150 },
+						content: { wordBreak: "break-word" }
+					}}
 				>
 					{isLoading ? (
-						<div
-							style={{
-								display: "flex",
-								justifyContent: "center",
-								alignItems: "center",
-								minHeight: "40vh"
-							}}
-						>
-							<Spin size="large" tip="Loading URL Info..." />
+						<div className="loader-style">
+							<Spin size="small"/>
 						</div>
 					) : urlInfo ? (
 						<>

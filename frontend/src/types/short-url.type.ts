@@ -1,9 +1,11 @@
-type TShortUrl = Readonly<{
+import { Dayjs } from "dayjs";
+
+type TShortUrl = {
     originalUrl: string;
-    expiresAt: number | null;
+    expiresAt?: string | Dayjs | Date;
     createdAt: number;
-    alias: string;
-}>;
+    alias?: string;
+};
 
 export type TNewShortUrlBody = Pick<TShortUrl, 'alias' | 'expiresAt' | 'originalUrl'>;
 
