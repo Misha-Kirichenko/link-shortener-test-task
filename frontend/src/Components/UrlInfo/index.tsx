@@ -24,7 +24,7 @@ const UrlInfo = ({ isLoading, urlInfo }: UrlInfoProps) => {
 				>
 					{isLoading ? (
 						<div className="loader-style">
-							<Spin size="small"/>
+							<Spin size="small" />
 						</div>
 					) : urlInfo ? (
 						<>
@@ -44,7 +44,15 @@ const UrlInfo = ({ isLoading, urlInfo }: UrlInfoProps) => {
 
 							<Descriptions.Item label="Expires At">
 								{urlInfo.expiresAt ? (
-									dayjs(urlInfo.expiresAt).format("DD-MM-YYYY HH:mm")
+									Date.now() >=
+									new Date(urlInfo.expiresAt as string).getTime() ? (
+										<Tag color="red">
+											{dayjs(urlInfo.expiresAt).format("DD-MM-YYYY HH:mm")}
+											&nbsp;-&nbsp;Expired
+										</Tag>
+									) : (
+										dayjs(urlInfo.expiresAt).format("DD-MM-YYYY HH:mm")
+									)
 								) : (
 									<Tag color="green">Never</Tag>
 								)}

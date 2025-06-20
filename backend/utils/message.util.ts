@@ -8,6 +8,6 @@ export const messageUtil = {
   },
   EXCEPTION: {
     NOT_FOUND: (resource: string): string => `${resource} was not found`,
-    EXPIRED: (url: string): string => `Short "${url}" expired`,
+    EXPIRED: (url: string): string => `URL:"${url}" is expired`,
   },
 };

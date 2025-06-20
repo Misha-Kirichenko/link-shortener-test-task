@@ -3,7 +3,7 @@ import { LinkShortenerService } from './link-shortener.service';
 import { UrlDTO } from './dto/url.dto';
 import { IMessage, IShortUrl } from 'common/interfaces';
 
-@Controller('link-shortener')
+@Controller('/link-shortener')
 export class LinkShortenerController {
   constructor(private readonly linkShortenerService: LinkShortenerService) { }
 
