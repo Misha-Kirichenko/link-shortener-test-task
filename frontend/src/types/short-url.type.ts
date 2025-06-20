@@ -1,0 +1,14 @@
+type TShortUrl = Readonly<{
+    originalUrl: string;
+    expiresAt: number | null;
+    createdAt: number;
+    alias: string;
+}>;
+
+export type TNewShortUrlBody = Pick<TShortUrl, 'alias' | 'expiresAt' | 'originalUrl'>;
+
+export type TShortUrlInfo = Readonly<Omit<TShortUrl, 'alias'> & { clickCount: number }>;
+
+export type TShortUrlAnalytics = Readonly<
+    Pick<TShortUrlInfo, 'clickCount'> & { ips: string[] }
+>;
