@@ -19,7 +19,7 @@ export class AppService {
     private readonly shortLinkRepository: Repository<ShortLink>,
     @InjectRepository(Click)
     private readonly clickRepository: Repository<Click>,
-  ) { }
+  ) {}
 
   public async redirectToUrl(
     ip: string,
@@ -56,7 +56,7 @@ export class AppService {
         shortLink: { id },
       });
 
-      res.redirect(originalUrl);
+      res.redirect(expiresAt ? 302 : 301, originalUrl);
     } catch (error) {
       if (error instanceof HttpException) throw error;
       throw new BadRequestException(MESSAGES.ERRORS.BAD_REQUEST);

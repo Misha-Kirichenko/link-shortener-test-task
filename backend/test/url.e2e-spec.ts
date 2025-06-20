@@ -6,7 +6,7 @@ import { IShortLinkListItem } from 'src/common/interfaces';
 import { UrlModule } from 'src/url/url.module';
 import { DbModule } from 'src/db/db.module';
 
-describe('URL (e2e)', () => {
+describe('UrlController (e2e)', () => {
   let app: INestApplication<App>;
 
   beforeAll(async () => {

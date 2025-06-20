@@ -82,7 +82,6 @@ To **start the application**, use one of the following commands:
 | `make start`          | Start the app **without running tests**                                     |
 | `make start-test-run` | Run **tests first**. If they pass, the app will start. Otherwise, it stops. |
 | `make clean`          | Stop and remove running containers                                           |
-| `make clean-all`      | Remove all stopped containers, volumes, and images                          |
 
 > ⏳ `make start-test-run` will **block the startup** if any tests fail.  
 > This helps ensure only verified code is deployed.
@@ -101,10 +100,6 @@ make start-test-run
 ```bash
 # Clean up containers
 make clean
-```
-```bash
-# Clean everything (containers, images, volumes)
-make clean-all
 ```
 
 ## 5. Open the URL below in your browser
