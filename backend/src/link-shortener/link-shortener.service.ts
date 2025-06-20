@@ -19,7 +19,7 @@ export class LinkShortenerService {
   constructor(
     @InjectRepository(ShortLink)
     private readonly shortLinkRepository: Repository<ShortLink>,
-  ) { }
+  ) {}
 
   public async shortenUrl(urlDTO: UrlDTO): Promise<IShortUrl> {
     const insertData = {

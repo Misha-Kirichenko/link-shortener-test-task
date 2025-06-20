@@ -10,7 +10,7 @@ import { CONFIG } from './config';
       type: 'postgres',
       autoLoadEntities: true,
       synchronize: true, //only in dev
-      logging: true,
+      logging: false,
     }),
   ],
   exports: [TypeOrmModule],

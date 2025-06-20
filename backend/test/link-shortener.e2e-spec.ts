@@ -34,6 +34,7 @@ describe('Link Shortener (e2e)', () => {
   afterAll(async () => {
     await queryRunner.rollbackTransaction();
     await queryRunner.release();
+    await app.close();
   });
 
   describe('Shorten url ', () => {

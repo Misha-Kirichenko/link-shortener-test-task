@@ -31,9 +31,11 @@ describe('URL (e2e)', () => {
     it('Response status must be 200', () => {
       expect(res.status).toBe(200);
     });
+
     it('Response body must be an array', () => {
       expect(Array.isArray(res.body)).toBe(true);
     });
+
     it('All url list objects must have valid form', () => {
       const validUrList = (body: IShortLinkListItem[]) => {
         const requiredKeys = ['alias', 'shortUrl'];
