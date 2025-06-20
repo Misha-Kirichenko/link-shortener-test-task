@@ -30,7 +30,7 @@ const UrlAnalytics = ({ isLoading, analytics }: UrlAnalyticsProps) => {
 						</Descriptions>
 
 						<Title level={5} style={{ marginTop: 24 }}>
-							Last visits
+							Last 5 visits
 						</Title>
 						<List
 							bordered

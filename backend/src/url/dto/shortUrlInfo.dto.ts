@@ -1,5 +1,5 @@
 import { IsIn, IsNotEmpty, IsString } from 'class-validator';
-import { InfoType } from 'src/info-type.enum';
+import { InfoType } from 'src/common/enums/info-type.enum';
 
 export class ShortLinkInfoDTO {
   @IsNotEmpty()

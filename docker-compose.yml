@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   link-shortener-backend:
@@ -12,6 +12,7 @@ services:
       - link-shortener-db
     environment:
       API_PORT: ${API_PORT}
+      NGINX_PORT: ${NGINX_PORT}
       HOST: ${HOST}
     env_file:
       - .env
@@ -44,6 +45,21 @@ services:
       - NGINX_PORT=${NGINX_PORT}
     depends_on:
       - link-shortener-backend
+    networks:
+      - link-shortener-network
+
+  link-shortener-backend-tests:
+    build: ./backend
+    container_name: link-shortener-test
+    command: npm run test:e2e
+    environment:
+      API_PORT: ${API_PORT}
+      NGINX_PORT: ${NGINX_PORT}
+      HOST: ${HOST}
+    env_file:
+      - .env
+    depends_on:
+      - link-shortener-db
     networks:
       - link-shortener-network
 

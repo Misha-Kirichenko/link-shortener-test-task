@@ -1,9 +1,9 @@
 import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
 import { LinkShortenerService } from './link-shortener.service';
 import { UrlDTO } from './dto/url.dto';
-import { IMessage, IShortUrl } from 'common/interfaces';
+import { IMessage, IShortUrl } from 'src/common/interfaces';
 
-@Controller('link-shortener')
+@Controller('/link-shortener')
 export class LinkShortenerController {
   constructor(private readonly linkShortenerService: LinkShortenerService) { }
 

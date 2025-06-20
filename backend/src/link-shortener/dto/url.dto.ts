@@ -5,7 +5,7 @@ import {
   IsUrl,
   Matches,
 } from 'class-validator';
-import { IsFutureDate } from 'common/decorators';
+import { IsFutureDate } from 'src/common/decorators';
 
 export class UrlDTO {
   @IsNotEmpty()

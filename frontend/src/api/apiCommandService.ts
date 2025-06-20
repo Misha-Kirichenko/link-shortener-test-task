@@ -5,15 +5,17 @@ import api from "./api";
 import type { ICreatedUrlRes } from "../types/created-url-res.interface";
 
 class ApiCommandService {
-	static apibase = `/api/link-shortener`;
+	static resourcePath = `/link-shortener`;
 
 	static async deleteShortUrl(shortUrl: string): Promise<AxiosResponse<IResMessage>> {
-		const response = await api.delete(`${ApiCommandService.apibase}/${shortUrl}`);
+		const { resourcePath } = ApiCommandService;
+		const response = await api.delete(`${resourcePath}/${shortUrl}`);
 		return response;
 	}
 
 	static async createShortUrl(body: TNewShortUrlBody): Promise<AxiosResponse<ICreatedUrlRes>> {
-		const response = await api.post(`${ApiCommandService.apibase}/shorten`, body);
+		const { resourcePath } = ApiCommandService;
+		const response = await api.post(`${resourcePath}/shorten`, body);
 		return response;
 	}
 }

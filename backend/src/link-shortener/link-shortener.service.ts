@@ -6,20 +6,20 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ShortLink } from 'db/entities';
+import { ShortLink } from 'src/db/entities';
 import { Repository } from 'typeorm';
 import { UrlDTO } from './dto/url.dto';
 import * as crypto from 'crypto';
-import { getShortenUrlAddr, messageUtil } from 'utils';
-import { IMessage, IShortUrl } from 'common/interfaces';
-import { MESSAGES } from 'common/constants/message.constants';
+import { getShortenUrlAddr, messageUtil } from 'src/utils';
+import { IMessage, IShortUrl } from 'src/common/interfaces';
+import { MESSAGES } from 'src/common/constants/message.constants';
 
 @Injectable()
 export class LinkShortenerService {
   constructor(
     @InjectRepository(ShortLink)
     private readonly shortLinkRepository: Repository<ShortLink>,
-  ) {}
+  ) { }
 
   public async shortenUrl(urlDTO: UrlDTO): Promise<IShortUrl> {
     const insertData = {

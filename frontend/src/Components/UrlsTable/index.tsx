@@ -35,7 +35,7 @@ const UrlsTable = () => {
 	const context = useContext(UrlListContext);
 
 	if (!context) {
-		throw new Error("UrlListContext not provided");
+		throw new Error("No url list data provided");
 	}
 
 	const { urlList, isLoading } = context;
@@ -60,9 +60,15 @@ const UrlsTable = () => {
 			dataIndex: "shortUrl",
 			key: "shortUrl",
 			render: (text: string) => (
-				<Link to={text} style={{ wordBreak: "break-all" }}>
-					{text}
-				</Link>
+				<Tooltip title="Open short link">
+					<Button
+						type="link"
+						style={{ padding: 0, wordBreak: "break-all" }}
+						onClick={() => window.open(text)}
+					>
+						{text}
+					</Button>
+				</Tooltip>
 			)
 		},
 		{

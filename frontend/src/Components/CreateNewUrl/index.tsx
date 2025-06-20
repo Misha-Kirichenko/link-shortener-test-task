@@ -146,7 +146,8 @@ const CreateNewUrl: React.FC = () => {
 				<div>
 					<label>Expires At (optional)</label>
 					<DatePicker
-						showTime
+						showTime={{ format: "HH:mm" }}
+  						format="YYYY-MM-DD HH:mm" 
 						value={formData.expiresAt}
 						onChange={(value) => handleChange("expiresAt", value as Dayjs)}
 						style={{ width: "100%" }}
