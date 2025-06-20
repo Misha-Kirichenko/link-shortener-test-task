@@ -1,15 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
-import Main from "./pages/Main";
-import UrlInfo from "./pages/UrlInfo";
-import UrlAnalytics from "./pages/UrlAnalytics";
+import MainPage from "./pages/MainPage";
+import UrlInfoPage from "./pages/UrlInfoPage";
+import UrlAnalyticsPage from "./pages/UrlAnalyticsPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
 	return (
 		<Router>
 			<Routes>
-				<Route index path="/" element={<Main />} />
-				<Route path="/url-info/:shortUrl" element={<UrlInfo />} />
-				<Route path="/url-analytics/:shortUrl" element={<UrlAnalytics />} />
+				<Route index path="/" element={<MainPage />} />
+				<Route path="/url-info/:shortUrl" element={<UrlInfoPage />} />
+				<Route path="/url-analytics/:shortUrl" element={<UrlAnalyticsPage />} />
+				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</Router>
 	);

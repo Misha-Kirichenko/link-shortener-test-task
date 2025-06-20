@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ApiQueryService from "../api/apiQueryService";
-import type { IUrlListItem } from "../types/url-list.interface";
+import type { IUrlListItem } from "../types/url-list-item.interface";
 
 const useGetAllUrls = () => {
 	const [urlList, setUrlList] = useState<IUrlListItem[]>([]);
@@ -14,7 +14,7 @@ const useGetAllUrls = () => {
 					setUrlList(response.data);
 				} else {
 					console.warn("Expected array, got:", response.data);
-					setUrlList([]); // fallback
+					setUrlList([]);
 				}
 			} catch (error) {
 				console.error("Error while getting URL list:", error);

@@ -1,0 +1,17 @@
+.list-wrapper {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+.list-wrapper-inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.pagination-wrapper {
+	text-align: "center";
+	margin-top: 16px;
+}

@@ -20,7 +20,7 @@ export const SHORT_LINK_ANALYTICS = `
   ) AS "clickCount",
 
   (
-    SELECT json_agg(cl.ip) 
+    SELECT COALESCE(json_agg(cl.ip), '[]') 
         FROM (
           SELECT cl.ip 
           FROM clicks cl 
@@ -36,4 +36,4 @@ export const SHORT_LINK_ANALYTICS = `
 
 export const SHORT_URL_LIST_QUERY = `
   SELECT sl.alias, CONCAT($1::text, ':', $2::text, '/', sl.alias) AS "shortUrl"
-  FROM short_links sl`;
+  FROM short_links sl ORDER BY sl.created_at DESC`;

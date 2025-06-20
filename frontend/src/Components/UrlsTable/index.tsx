@@ -15,17 +15,20 @@ import {
 	PlusOutlined
 } from "@ant-design/icons";
 import { Link } from "react-router";
-import type { IUrlListItem } from "../../types/url-list.interface";
-import useGetAllUrls from "../../hooks/useGetAllUrls";
+import type { IUrlListItem } from "../../types/url-list-item.interface";
+import "./urls-table.css";
 
 const { Title } = Typography;
 
 const pageSize = 10;
 
-const UrlsTable = () => {
-	const [currentPage, setCurrentPage] = useState(1);
+interface UrlsTableProps {
+	urlList: IUrlListItem[];
+	isLoading: boolean;
+}
 
-	const { urlList, isLoading } = useGetAllUrls();
+const UrlsTable = ({ urlList, isLoading }: UrlsTableProps) => {
+	const [currentPage, setCurrentPage] = useState(1);
 
 	const pagedData = urlList.slice(
 		(currentPage - 1) * pageSize,
@@ -56,7 +59,6 @@ const UrlsTable = () => {
 							<Button icon={<InfoCircleOutlined />} />
 						</Link>
 					</Tooltip>
-
 					<Tooltip title="Analytics">
 						<Link to={`/url-analytics/${record.alias}`}>
 							<Button icon={<LineChartOutlined />} />
@@ -68,15 +70,8 @@ const UrlsTable = () => {
 	];
 
 	return (
-		<div style={{ maxWidth: 800, margin: "0 auto", padding: "1rem" }}>
-			<div
-				style={{
-					display: "flex",
-					justifyContent: "space-between",
-					alignItems: "center",
-					marginBottom: 16
-				}}
-			>
+		<div className="list-wrapper">
+			<div className="list-wrapper-inner">
 				<Title level={3} style={{ margin: 0 }}>
 					Short URLs
 				</Title>
@@ -91,12 +86,11 @@ const UrlsTable = () => {
 					pagination={false}
 					bordered={false}
 					size="middle"
-					style={{ background: "white" }}
 				/>
 			</Spin>
 
 			{!isLoading && urlList.length > pageSize && (
-				<div style={{ textAlign: "center", marginTop: 16 }}>
+				<div className="pagination-wrapper">
 					<Pagination
 						current={currentPage}
 						pageSize={pageSize}

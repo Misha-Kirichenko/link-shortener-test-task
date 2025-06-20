@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { ValidationPipe } from '@nestjs/common';
+import { CORS_SETTINGS } from 'common/constants/cors-settings.constants';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -18,10 +19,7 @@ async function bootstrap() {
     exclude: ['/:shortUrl'],
   });
 
-  app.enableCors({
-    origin: ['http://localhost:5173', 'http://localhost:8080'],
-    credentials: true,
-  });
+  app.enableCors(CORS_SETTINGS);
   app.set('trust proxy', true);
   await app.listen(process.env.API_PORT || 3000);
 }

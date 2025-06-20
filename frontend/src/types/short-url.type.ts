@@ -10,5 +10,5 @@ export type TNewShortUrlBody = Pick<TShortUrl, 'alias' | 'expiresAt' | 'original
 export type TShortUrlInfo = Readonly<Omit<TShortUrl, 'alias'> & { clickCount: number }>;
 
 export type TShortUrlAnalytics = Readonly<
-    Pick<TShortUrlInfo, 'clickCount'> & { ips: string[] }
+    Pick<TShortUrlInfo, 'clickCount'> & { lastIps: string[] }
 >;
